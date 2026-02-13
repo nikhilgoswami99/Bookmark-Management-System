@@ -1,0 +1,13 @@
+.mainContent {
+  margin-left: 15rem;
+  height: calc(100vh - 3.75rem);
+  overflow-y: auto;
+  transition: margin-left 0.3s;
+}
+
+@media (max-width: 48rem) {
+  .mainContent {
+    margin-left: 0;
+    width: 100%;
+  }
+}
