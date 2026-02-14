@@ -35,11 +35,28 @@ export default function Home() {
 
   const handleAddBookmark = (newBookmarkData: any) => {
     console.log("New bookmark added:", newBookmarkData);
-    // Ideally, here you would re-fetch bookmarks or add the new one to the state
-    // For now, we just close the modal
+    // Refresh bookmarks after adding
+    fetch("/api/bookmarks")
+      .then((response) => response.json())
+      .then((data) => setBookmarks(data));
     setIsModalOpen(false);
-    // Optional: Reload bookmarks to see the new one if API was called in modal
-    // window.location.reload(); 
+  };
+
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(`/api/bookmarks/${id}`, {
+        method: "DELETE",
+      });
+
+      if (response.ok) {
+        // Optimistically update the UI by filtering out the deleted bookmark
+        setBookmarks((prev) => prev.filter((bookmark) => bookmark._id !== id));
+      } else {
+        console.error("Failed to delete bookmark");
+      }
+    } catch (error) {
+      console.error("Error deleting bookmark:", error);
+    }
   };
 
   return (
@@ -60,6 +77,7 @@ export default function Home() {
           {bookmarks.map((bookmark) => (
             <BookmarkCard
               key={bookmark._id}
+              _id={bookmark._id}
               title={bookmark.title}
               url={bookmark.url}
               description={bookmark.description}
@@ -69,6 +87,7 @@ export default function Home() {
                 month: 'short'
               })}
               favicon={bookmark.favicon}
+              onDelete={() => handleDelete(bookmark._id)}
             />
           ))}
         </div>

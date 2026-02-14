@@ -41,7 +41,13 @@
 
 .logoIcon {
   font-size: 1.5rem;
-  color: #004845;
+  color: white;
+  background-color: #2563eb;
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoText {

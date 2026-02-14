@@ -2,17 +2,21 @@ import React from 'react'
 import styles from './bookmarkCard.module.css'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { AiOutlineCalendar } from 'react-icons/ai'
+import { MdBookmarkBorder } from 'react-icons/md'
+import DeleteButton from '../deleteButton/DeleteButton'
 
 interface BookmarkCardProps {
+  _id: string;
   title: string;
   url: string;
   description: string;
   tags: string[];
   date: string;
   favicon?: string;
+  onDelete: () => void;
 }
 
-function BookmarkCard({ title, url, description, tags, date, favicon }: BookmarkCardProps) {
+function BookmarkCard({ _id, title, url, description, tags, date, favicon, onDelete }: BookmarkCardProps) {
   return (
     <div className={styles.card}>
       {/* Header */}
@@ -53,11 +57,12 @@ function BookmarkCard({ title, url, description, tags, date, favicon }: Bookmark
           <AiOutlineCalendar className={styles.icon} />
           <span>{date}</span>
         </div>
-        <button className={styles.bookmarkButton}>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 2h10v12l-5-3-5 3V2z" stroke="currentColor" strokeWidth="1.5" fill="none"/>
-          </svg>
-        </button>
+        <div className={styles.actions}>
+          <DeleteButton onClick={onDelete} />
+          <button className={styles.bookmarkButton}>
+            <MdBookmarkBorder />
+          </button>
+        </div>
       </div>
     </div>
   )

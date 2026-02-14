@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./navbar.module.css";
 import { FiSearch, FiMenu } from "react-icons/fi";
-import { BsBookmark } from "react-icons/bs";
+import { MdBookmarkBorder } from "react-icons/md";
 
 interface NavbarProps {
   onMenuClick?: () => void;
@@ -19,7 +19,10 @@ function Navbar({ onMenuClick }: NavbarProps) {
           <button className={styles.menuButton} onClick={onMenuClick}>
             <FiMenu />
           </button>
-          <BsBookmark className={styles.logoIcon} />
+          <span className={styles.logoIcon}>
+            <MdBookmarkBorder />
+          </span>
+          
           <span className={styles.logoText}>Bookmark Manager</span>
         </div>
 

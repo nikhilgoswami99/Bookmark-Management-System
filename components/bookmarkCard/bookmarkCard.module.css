@@ -154,8 +154,14 @@
   color: #9ca3af;
 }
 
-.bookmarkButton {
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-left: auto;
+}
+
+.bookmarkButton {
   background: none;
   border: none;
   color: #6b7280;
