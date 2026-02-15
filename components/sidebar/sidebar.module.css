@@ -1,12 +1,12 @@
 .sidebar {
   width: 15rem;
-  background-color: white;
+  background-color: var(--surface-color);
   height: calc(100vh - 3.75rem);
   position: fixed;
   left: 0;
   top: 3.75rem;
   overflow-y: auto;
-  border-right: 0.0625rem solid #e5e7eb;
+  border-right: 0.0625rem solid var(--border-color);
   padding: 1rem 0;
 }
 
@@ -22,7 +22,7 @@
   gap: 0.75rem;
   padding: 0.625rem 0.875rem;
   border-radius: 0.5rem;
-  color: #4b5563;
+  color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -31,13 +31,13 @@
 }
 
 .navItem:hover {
-  background-color: #e8f1f0;
-  color: #1f2937;
+  background-color: var(--primary-light);
+  color: var(--text-main);
 }
 
 .navItem.active {
-  background-color: #e8f1f0;
-  color: #1f2937;
+  background-color: var(--primary-light);
+  color: var(--text-main);
 }
 
 .navIcon {
@@ -53,7 +53,7 @@
 .tagsHeader {
   font-size: 0.6875rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: var(--text-placeholder);
   letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
   padding: 0 0.875rem;
@@ -77,33 +77,33 @@
 }
 
 .tagItem:hover {
-  background-color: #e8f1f0;
+  background-color: var(--primary-light);
 }
 
 .checkbox {
   width: 1rem;
   height: 1rem;
-  border: 0.09375rem solid #d1d5db;
+  border: 0.09375rem solid var(--text-placeholder);
   border-radius: 0.25rem;
   cursor: pointer;
   flex-shrink: 0;
-  accent-color: #004845;
+  accent-color: var(--primary-color);
 }
 
 .checkbox:hover {
-  border-color: #004845;
+  border-color: var(--primary-color);
 }
 
 .tagName {
   flex: 1;
   font-size: 0.9375rem;
-  color: #374151;
+  color: var(--text-main);
   font-weight: 400;
 }
 
 .tagCount {
   font-size: 0.8125rem;
-  color: #9ca3af;
+  color: var(--text-placeholder);
   font-weight: 500;
   min-width: 1.25rem;
   text-align: right;

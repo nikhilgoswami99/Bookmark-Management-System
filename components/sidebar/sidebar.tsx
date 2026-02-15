@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './sidebar.module.css'
 import { AiOutlineHome } from 'react-icons/ai'
-import { MdOutlineArchive } from 'react-icons/md'
+
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -37,10 +37,7 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
             <AiOutlineHome className={styles.navIcon} />
             <span>Home</span>
           </a>
-          <a href="#" className={styles.navItem}>
-            <MdOutlineArchive className={styles.navIcon} />
-            <span>Archived</span>
-          </a>
+
         </nav>
 
         {/* Tags Section */}

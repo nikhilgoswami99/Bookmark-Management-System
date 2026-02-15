@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './bookmarkCard.module.css'
-import { BsThreeDotsVertical } from 'react-icons/bs'
+import { FiExternalLink } from 'react-icons/fi'
 import { AiOutlineCalendar } from 'react-icons/ai'
-import { MdBookmarkBorder } from 'react-icons/md'
 import DeleteButton from '../deleteButton/DeleteButton'
 
 interface BookmarkCardProps {
@@ -34,9 +33,15 @@ function BookmarkCard({ _id, title, url, description, tags, date, favicon, onDel
             <p className={styles.url}>{url}</p>
           </div>
         </div>
-        <button className={styles.menuButton}>
-          <BsThreeDotsVertical />
-        </button>
+        <a 
+          href={url} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={styles.visitLink}
+          title="Visit website"
+        >
+          <FiExternalLink />
+        </a>
       </div>
 
       {/* Description */}
@@ -59,9 +64,6 @@ function BookmarkCard({ _id, title, url, description, tags, date, favicon, onDel
         </div>
         <div className={styles.actions}>
           <DeleteButton onClick={onDelete} />
-          <button className={styles.bookmarkButton}>
-            <MdBookmarkBorder />
-          </button>
         </div>
       </div>
     </div>

@@ -1,3 +1,56 @@
+:root {
+  /* Brand Colors */
+  --primary-color: #004845;
+  --primary-light: #e8f1f0;
+  --secondary-color: #2563eb;
+  
+  /* Neutral Colors */
+  --bg-color: #e8f1f0;
+  --surface-color: #ffffff;
+  --border-color: #e5e7eb;
+  --input-bg: #f9fafb;
+  
+  /* Text Colors */
+  --text-main: #1f2937;
+  --text-main-hover: #004845;
+  --text-muted: #4b5563;
+  --text-placeholder: #9ca3af;
+  --text-light: #6b7280;
+  --text-white: #ffffff;
+  
+  /* Action Colors */
+  --error-color: #dc2626;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  
+  /* Component Specific */
+  --accent-bg: #023636;
+  --accent-text: #ffffff;
+}
+
+[data-theme="dark"] {
+  /* Brand Colors */
+  --primary-color: #00b3a4;
+  --primary-light: #012b2b;
+  --secondary-color: #3b82f6;
+  
+  /* Neutral Colors */
+  --bg-color: #001414;
+  --surface-color: #011f1f;
+  --border-color: #023636;
+  --input-bg: #001f1f;
+  
+  /* Text Colors */
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-placeholder: #64748b;
+  --text-light: #94a3b8;
+  --text-white: #ffffff;
+  
+  /* Action Colors */
+  --error-color: #ef4444;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+
+}
 
 * {
   box-sizing: border-box;
@@ -6,7 +59,7 @@
 }
 
 body {
-  background-color: #e8f1f0;
+  background-color: var(--bg-color);
   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

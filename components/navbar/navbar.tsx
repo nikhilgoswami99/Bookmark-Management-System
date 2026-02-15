@@ -2,14 +2,16 @@
 
 import React from "react";
 import styles from "./navbar.module.css";
-import { FiSearch, FiMenu } from "react-icons/fi";
+import { FiSearch, FiMenu, FiMoon, FiSun } from "react-icons/fi";
 import { MdBookmarkBorder } from "react-icons/md";
+import { useTheme } from "@/context/ThemeContext";
 
 interface NavbarProps {
   onMenuClick?: () => void;
 }
 
 function Navbar({ onMenuClick }: NavbarProps) {
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className={styles.navbar}>
@@ -38,6 +40,15 @@ function Navbar({ onMenuClick }: NavbarProps) {
 
         {/* Right Section */}
         <div className={styles.rightSection}>
+          <div className={styles.actionButtons}>
+            <button 
+              className={styles.iconButton} 
+              onClick={toggleTheme}
+              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+            >
+              {theme === "light" ? <FiMoon /> : <FiSun />}
+            </button>
+          </div>
           <div className={styles.userAvatar}>
             <img
               src="https://via.placeholder.com/40"

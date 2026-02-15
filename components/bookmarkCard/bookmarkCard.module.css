@@ -1,8 +1,8 @@
 .card {
-  background-color: white;
+  background-color: var(--surface-color);
   border-radius: 0.5rem;
   padding: 1rem;
-  border: 0.0625rem solid #e5e7eb;
+  border: 0.0625rem solid var(--border-color);
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 .card:hover {
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0.25rem 0.75rem var(--shadow-color);
   transform: translateY(-0.125rem);
 }
 
@@ -42,8 +42,8 @@
   width: 2rem;
   height: 2rem;
   border-radius: 0.25rem;
-  background-color: #004845;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,7 +62,7 @@
 .title {
   font-size: 0.9375rem;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text-main);
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -71,14 +71,14 @@
 
 .url {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--text-placeholder);
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.menuButton {
+.visitLink {
   background: none;
   border: none;
   color: #6b7280;
@@ -90,17 +90,18 @@
   border-radius: 0.25rem;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  text-decoration: none;
 }
 
-.menuButton:hover {
-  background-color: #f3f4f6;
-  color: #1f2937;
+.visitLink:hover {
+  background-color: var(--input-bg);
+  color: var(--primary-color);
 }
 
 /* Description */
 .description {
   font-size: 0.8125rem;
-  color: #4b5563;
+  color: var(--text-muted);
   line-height: 1.5;
   margin: 0;
   display: -webkit-box;
@@ -119,8 +120,8 @@
 
 .tag {
   font-size: 0.6875rem;
-  color: #6b7280;
-  background-color: #f3f4f6;
+  color: var(--text-light);
+  background-color: var(--input-bg);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   font-weight: 500;
@@ -128,8 +129,8 @@
 }
 
 .tag:hover {
-  background-color: #e5e7eb;
-  color: #374151;
+  background-color: var(--border-color);
+  color: var(--text-muted);
 }
 
 /* Footer */
@@ -138,7 +139,7 @@
   align-items: center;
   gap: 0.75rem;
   padding-top: 0.5rem;
-  border-top: 0.0625rem solid #f3f4f6;
+  border-top: 0.0625rem solid var(--input-bg);
 }
 
 .stat {
@@ -146,12 +147,12 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--text-light);
 }
 
 .icon {
   font-size: 0.875rem;
-  color: #9ca3af;
+  color: var(--text-placeholder);
 }
 
 .actions {
@@ -159,24 +160,6 @@
   align-items: center;
   gap: 0.5rem;
   margin-left: auto;
-}
-
-.bookmarkButton {
-  background: none;
-  border: none;
-  color: #6b7280;
-  cursor: pointer;
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.25rem;
-  transition: all 0.2s ease;
-}
-
-.bookmarkButton:hover {
-  background-color: #f3f4f6;
-  color: #004845;
 }
 
 /* Responsive */

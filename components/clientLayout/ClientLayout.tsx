@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
 
 import styles from './clientLayout.module.css';
+import { ThemeProvider } from '@/context/ThemeContext';
 
 export default function ClientLayout({
   children,
@@ -24,12 +25,12 @@ export default function ClientLayout({
   };
 
   return (
-    <>
+    <ThemeProvider>
       <Navbar onMenuClick={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
       <main className={styles.mainContent}>
         {children}
       </main>
-    </>
+    </ThemeProvider>
   );
 }
