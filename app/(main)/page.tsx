@@ -22,23 +22,30 @@ export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetch("/api/bookmarks")
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchBookmarks = async () => {
+      try {
+        const response = await fetch("/api/bookmarks");
+        const data = await response.json();
         setBookmarks(data);
         console.log(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching bookmarks:", error);
-      });
+      }
+    };
+
+    fetchBookmarks();
   }, []);
 
-  const handleAddBookmark = (newBookmarkData: any) => {
+  const handleAddBookmark = async (newBookmarkData: any) => {
     console.log("New bookmark added:", newBookmarkData);
-    // Refresh bookmarks after adding
-    fetch("/api/bookmarks")
-      .then((response) => response.json())
-      .then((data) => setBookmarks(data));
+    try {
+      // Refresh bookmarks after adding
+      const response = await fetch("/api/bookmarks");
+      const data = await response.json();
+      setBookmarks(data);
+    } catch (error) {
+      console.error("Error refreshing bookmarks:", error);
+    }
     setIsModalOpen(false);
   };
 

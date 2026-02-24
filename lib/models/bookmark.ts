@@ -19,21 +19,25 @@ const BookmarkSchema = new Schema(
     tags: {
       type: [String],
       default: [],
+      index: true,
     },
     favicon: {
       type: String,
       default: "",
     },
-    userId: {
+    ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: false,
+      required: true,
+      index: true,
     },
   },
   {
-    timestamps: true, // creates createdAt and updatedAt automatically
+    timestamps: true, 
   }
 );
+
+BookmarkSchema.index({ ownerId: 1, createdAt: -1 });
 
 export default models.Bookmark ||
   mongoose.model("Bookmark", BookmarkSchema);
