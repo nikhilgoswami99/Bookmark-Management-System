@@ -3,10 +3,16 @@ import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server";
 
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
+import Session from "@/lib/models/session";
+import crypto from "crypto";
 
 export async function POST(req: Request) {
     try {
         await connectDB();
+
+        const cookieStore = await cookies();
+        
         
         // 1. Get info from body
         const { email, password } = await req.json();
@@ -38,6 +44,15 @@ export async function POST(req: Request) {
                 { status: 401 }
             );
         }
+
+        // 5. Create session in DB
+        const sessionId = crypto.randomUUID();
+        await Session.create({ sessionId, userId: user._id });
+
+        cookieStore.set("sessionID", sessionId, {
+            httpOnly: true,
+            maxAge: 7 * 24 * 60 * 60, // 7 days
+        });
 
         // 5. Successful Login
         // Remove password before sending user data back
