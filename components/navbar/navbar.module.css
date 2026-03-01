@@ -129,6 +129,16 @@
   color: var(--text-main);
 }
 
+.logoutButton {
+  background-color: var(--error-color) !important;
+  color: #fff !important;
+}
+
+.logoutButton:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
 .userAvatar {
   width: 2.5rem;
   height: 2.5rem;

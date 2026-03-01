@@ -25,12 +25,14 @@ export default function ClientLayout({
   };
 
   return (
-    <ThemeProvider>
-      <Navbar onMenuClick={toggleSidebar} />
-      <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
-      <main className={styles.mainContent}>
-        {children}
-      </main>
-    </ThemeProvider>
+    
+      <ThemeProvider>
+        <Navbar onMenuClick={toggleSidebar} />
+        <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+        <main className={styles.mainContent}>
+          {children}
+        </main>
+      </ThemeProvider>
+  
   );
 }

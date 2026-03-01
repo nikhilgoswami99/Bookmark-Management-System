@@ -2,9 +2,10 @@
 
 import React from "react";
 import styles from "./navbar.module.css";
-import { FiSearch, FiMenu, FiMoon, FiSun } from "react-icons/fi";
+import { FiSearch, FiMenu, FiMoon, FiSun, FiLogOut } from "react-icons/fi";
 import { MdBookmarkBorder } from "react-icons/md";
 import { useTheme } from "@/context/ThemeContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface NavbarProps {
   onMenuClick?: () => void;
@@ -12,6 +13,7 @@ interface NavbarProps {
 
 function Navbar({ onMenuClick }: NavbarProps) {
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuth();
 
   return (
     <nav className={styles.navbar}>
@@ -48,10 +50,21 @@ function Navbar({ onMenuClick }: NavbarProps) {
             >
               {theme === "light" ? <FiMoon /> : <FiSun />}
             </button>
+
+            {user && (
+              <button 
+                className={`${styles.iconButton} ${styles.logoutButton}`} 
+                onClick={logout}
+                title="Logout"
+              >
+                <FiLogOut />
+              </button>
+            )}
           </div>
+
           <div className={styles.userAvatar}>
             <img
-              src="https://via.placeholder.com/40"
+              src={user?.profilePic || "https://st5.depositphotos.com/1915171/64699/v/950/depositphotos_646996714-stock-illustration-user-profile-icon-vector-avatar.jpg"}
               alt="User"
               className={styles.avatarImage}
             />
