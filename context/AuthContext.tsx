@@ -48,7 +48,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       await fetch("/api/logout", { method: "POST" });
       setUser(null);
-      router.push("/login"); // Smooth redirect after logout
+      router.push("/"); // Smooth redirect to landing page after logout
     } catch (error) {
       console.error("Logout failed:", error);
     }

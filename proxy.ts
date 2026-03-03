@@ -6,17 +6,17 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // 1. Define public routes
-  const isPublicRoute = pathname === "/signin" || pathname === "/signup";
+  const isPublicRoute = pathname === "/" || pathname === "/signin" || pathname === "/signup";
 
   // 2. If no session and trying to access a protected route -> redirect to /signin
-  // (In this case, "/" is the main protected route)
+  // (Everything except /, /signin, /signup is protected)
   if (!sessionId && !isPublicRoute) {
     return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  // 3. If session exists and trying to access signin/signup -> redirect to /
-  if (sessionId && isPublicRoute) {
-    return NextResponse.redirect(new URL("/", request.url));
+  // 3. If session exists and trying to access signin/signup -> redirect to dashboard
+  if (sessionId && (pathname === "/signin" || pathname === "/signup")) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
   return NextResponse.next();
