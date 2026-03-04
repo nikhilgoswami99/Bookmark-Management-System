@@ -4,6 +4,7 @@ import { useState } from "react";
 import styles from "./authForm.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 type AuthFormProps = {
   title: string;
@@ -27,6 +28,7 @@ const AuthForm = ({
   mode,
 }: AuthFormProps) => {
   const router = useRouter();
+  const { setUser } = useAuth();
   const [formData, setFormData] = useState({
     ...(showNameField ? { name: "" } : {}),
     email: "",
@@ -76,8 +78,11 @@ const AuthForm = ({
 
     try {
       if (mode === "login") {
-        await loginUser(formData);
-        router.push("/");
+        const data = await loginUser(formData);
+        if (data.user) {
+          setUser(data.user);
+        }
+        router.push("/dashboard");
       } else {
         await registerUser(formData);
         router.push("/signin");

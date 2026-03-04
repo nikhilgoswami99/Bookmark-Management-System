@@ -5,7 +5,7 @@ import Features from '@/components/features/Features';
 
 export default function LandingPage() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-theme="dark">
       <LandingNavbar />
       
       <main className={styles.main}>
