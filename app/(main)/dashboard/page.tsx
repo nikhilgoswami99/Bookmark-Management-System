@@ -6,6 +6,7 @@ import BookmarkCard from "@/components/bookmarkCard/bookmarkCard";
 import { useEffect, useState } from "react";
 import AddBookmarkModal from "@/components/addBookmarkModal/AddBookmarkModal";
 import { HiPlus } from "react-icons/hi";
+import { useSearchParams } from "next/navigation";
 
 interface Bookmark {
   _id: string;
@@ -20,6 +21,9 @@ interface Bookmark {
 export default function Home() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const searchParams = useSearchParams();
+
+  let searchQuery = searchParams.get('q')?.trim();
 
   useEffect(() => {
     const fetchBookmarks = async () => {
@@ -27,7 +31,6 @@ export default function Home() {
         const response = await fetch("/api/bookmarks");
         const data = await response.json();
         setBookmarks(data);
-        console.log(data);
       } catch (error) {
         console.error("Error fetching bookmarks:", error);
       }
@@ -66,6 +69,21 @@ export default function Home() {
     }
   };
 
+  let filteredBookmarks = bookmarks.filter((item) => {
+
+    if(!searchQuery) return true;
+
+    let query = searchQuery.toLowerCase();
+
+    return (
+      item.title.toLowerCase().includes(query) || item.description.toLowerCase().includes(query) || item.tags.some((tag) => tag.toLowerCase().includes(query))
+    )
+    
+
+  });
+
+  console.log(filteredBookmarks);
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
@@ -81,7 +99,7 @@ export default function Home() {
         </div>
         
         <div className={styles.grid}>
-          {bookmarks.map((bookmark) => (
+          {filteredBookmarks.map((bookmark) => (
             <BookmarkCard
               key={bookmark._id}
               _id={bookmark._id}

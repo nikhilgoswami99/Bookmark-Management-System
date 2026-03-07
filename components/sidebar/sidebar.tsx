@@ -10,19 +10,23 @@ interface SidebarProps {
 
 function Sidebar({ isOpen = false, onClose }: SidebarProps) {
   const tags = [
-    { name: 'AI', count: 1 },
-    { name: 'Community', count: 5 },
-    { name: 'Compatibility', count: 1 },
-    { name: 'CSS', count: 6 },
-    { name: 'Design', count: 1 },
-    { name: 'Framework', count: 2 },
-    { name: 'Git', count: 1 },
-    { name: 'HTML', count: 2 },
-    { name: 'JavaScript', count: 3 },
-    { name: 'Layout', count: 3 },
-    { name: 'Learning', count: 6 },
-    { name: 'Performance', count: 2 },
+    'AI',
+    'Community',
+    'Compatibility',
+    'CSS',
+    'Design',
+    'Framework',
+    'Git',
+    'HTML',
+    'JavaScript',
+    'Layout',
+    'Learning',
+    'Performance',
   ];
+
+  const handleTags = (value: any) => {
+    console.log(value);
+  }
 
   return (
     <>
@@ -45,10 +49,9 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
           <h3 className={styles.tagsHeader}>TAGS</h3>
           <div className={styles.tagsList}>
             {tags.map((tag) => (
-              <label key={tag.name} className={styles.tagItem}>
-                <input type="checkbox" className={styles.checkbox} />
-                <span className={styles.tagName}>{tag.name}</span>
-                <span className={styles.tagCount}>{tag.count}</span>
+              <label key={tag} className={styles.tagItem}>
+                <input name={tag} onChange={(e) => handleTags(e.target.name)} type="checkbox" className={styles.checkbox} />
+                <span className={styles.tagName}>{tag}</span>
               </label>
             ))}
           </div>

@@ -2,10 +2,11 @@
 
 import React from "react";
 import styles from "./navbar.module.css";
-import { FiSearch, FiMenu, FiMoon, FiSun, FiLogOut } from "react-icons/fi";
+import { FiMenu, FiMoon, FiSun, FiLogOut } from "react-icons/fi";
 import { MdBookmarkBorder } from "react-icons/md";
 import { useTheme } from "@/context/ThemeContext";
 import { useAuth } from "@/context/AuthContext";
+import SearchBar from "../searchBar/searchBar";
 
 interface NavbarProps {
   onMenuClick?: () => void;
@@ -30,15 +31,8 @@ function Navbar({ onMenuClick }: NavbarProps) {
           <span className={styles.logoText}>Bookmark Manager</span>
         </div>
 
-        {/* Search Bar */}
-        <div className={styles.searchContainer}>
-          <FiSearch className={styles.searchIcon} />
-          <input
-            type="text"
-            placeholder="Search by title..."
-            className={styles.searchInput}
-          />
-        </div>
+        {/* Search Bar Component */}
+        <SearchBar className={styles.navbarSearch} />
 
         {/* Right Section */}
         <div className={styles.rightSection}>

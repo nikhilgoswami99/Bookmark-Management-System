@@ -1,64 +1,63 @@
 :root {
   color-scheme: dark;
 
-  /* Brand Colors - Dark (Default) */
-  --primary-color: #00b3a4;
-  --primary-light: #012b2b;
-  --secondary-color: #3b82f6;
-  
-  /* Neutral Colors - Dark (Default) */
-  --bg-color: #001414;
-  --surface-color: #011f1f;
-  --border-color: #023636;
-  --input-bg: #001f1f;
-  
-  /* Text Colors - Dark (Default) */
-  --text-main: #ffffff;
-  --text-main-hover: #00b3a4;
-  --text-muted: #cbd5e1;
-  --text-placeholder: #64748b;
-  --text-light: #94a3b8;
-  --text-white: #ffffff;
-  
-  /* Action Colors - Dark (Default) */
-  --error-color: #ef4444;
+  /* Theme Colors - Dark (Default) */
+  --background: oklch(0.13 0.015 260);
+  --foreground: oklch(0.96 0.005 260);
+  --card: oklch(0.17 0.015 260);
+  --card-foreground: oklch(0.96 0.005 260);
+  --popover: oklch(0.17 0.015 260);
+  --popover-foreground: oklch(0.96 0.005 260);
+  --primary: oklch(0.65 0.2 255);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.22 0.015 260);
+  --secondary-foreground: oklch(0.92 0.005 260);
+  --muted: oklch(0.22 0.015 260);
+  --muted-foreground: oklch(0.6 0.02 260);
+  --accent: oklch(0.7 0.18 165);
+  --accent-foreground: oklch(0.13 0.02 260);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.25 0.015 260);
+  --input: oklch(0.25 0.015 260);
+  --ring: oklch(0.65 0.2 255);
+  --chart-1: oklch(0.65 0.2 255);
+  --chart-2: oklch(0.7 0.18 165);
+  --chart-3: oklch(0.75 0.15 45);
+  --chart-4: oklch(0.65 0.2 340);
+  --chart-5: oklch(0.8 0.12 80);
+  --sidebar: oklch(0.15 0.015 260);
+  --sidebar-foreground: oklch(0.96 0.005 260);
+  --sidebar-primary: oklch(0.65 0.2 255);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.22 0.02 255);
+  --sidebar-accent-foreground: oklch(0.92 0.005 260);
+  --sidebar-border: oklch(0.25 0.015 260);
+  --sidebar-ring: oklch(0.65 0.2 255);
+
+  /* Legacy Variable Mappings (Mapping new colors to existing variable names) */
+  --primary-color: var(--primary);
+  --primary-light: var(--sidebar-accent);
+  --secondary-color: var(--secondary);
+  --bg-color: var(--background);
+  --surface-color: var(--card);
+  --border-color: var(--border);
+  --input-bg: var(--input);
+  --text-main: var(--foreground);
+  --text-main-hover: var(--primary);
+  --text-muted: var(--muted-foreground);
+  --text-placeholder: oklch(0.6 0.02 260 / 0.7);
+  --text-light: var(--muted-foreground);
+  --text-white: oklch(0.99 0 0);
+  --error-color: var(--destructive);
   --shadow-color: rgba(0, 0, 0, 0.4);
-  
-  /* Component Specific - Dark (Default) */
-  --accent-bg: #023636;
-  --accent-text: #ffffff;
+  --accent-bg: var(--accent);
+  --accent-text: var(--accent-foreground);
 }
 
-[data-theme="dark"] {
-  color-scheme: dark;
 
-  /* Brand Colors - Dark Override */
-  --primary-color: #00b3a4;
-  --primary-light: #012b2b;
-  --secondary-color: #3b82f6;
-  
-  /* Neutral Colors - Dark Override */
-  --bg-color: #001414;
-  --surface-color: #011f1f;
-  --border-color: #023636;
-  --input-bg: #001f1f;
-  
-  /* Text Colors - Dark Override */
-  --text-main: #ffffff;
-  --text-main-hover: #00b3a4;
-  --text-muted: #cbd5e1;
-  --text-placeholder: #64748b;
-  --text-light: #94a3b8;
-  --text-white: #ffffff;
-  
-  /* Action Colors - Dark Override */
-  --error-color: #ef4444;
-  --shadow-color: rgba(0, 0, 0, 0.4);
-  
-  /* Component Specific - Dark Override */
-  --accent-bg: #023636;
-  --accent-text: #ffffff;
-}
+
+
 
 [data-theme="light"] {
   color-scheme: light;
@@ -89,12 +88,40 @@
   /* Component Specific - Light */
   --accent-bg: #023636;
   --accent-text: #ffffff;
+
+  /* Theme Naming Mappings (Ensures new variable names work in light mode too) */
+  --background: var(--bg-color);
+  --foreground: var(--text-main);
+  --card: var(--surface-color);
+  --card-foreground: var(--text-main);
+  --popover: var(--surface-color);
+  --popover-foreground: var(--text-main);
+  --primary: var(--primary-color);
+  --primary-foreground: #ffffff;
+  --secondary: var(--secondary-color);
+  --secondary-foreground: #ffffff;
+  --muted: var(--primary-light);
+  --muted-foreground: var(--text-muted);
+  --accent: var(--accent-bg);
+  --accent-foreground: var(--accent-text);
+  --destructive: var(--error-color);
+  --destructive-foreground: #ffffff;
+  --border: var(--border-color);
+  --input: var(--input-bg);
+  --ring: var(--primary-color);
 }
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 body {
