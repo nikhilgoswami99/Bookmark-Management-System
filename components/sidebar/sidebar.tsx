@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './sidebar.module.css'
 import { AiOutlineHome } from 'react-icons/ai'
+import { useRouter ,usePathname, useSearchParams } from 'next/navigation';
+
 
 
 interface SidebarProps {
@@ -11,7 +13,9 @@ interface SidebarProps {
 function Sidebar({ isOpen = false, onClose }: SidebarProps) {
 
   const [tags, setTags] = useState<string[]>([]);
-  
+  const router = useRouter();
+  const pathName = usePathname();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -27,10 +31,18 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
     fetchTags();
   }, []);
 
-  const handleTags = (value: any) => {
-    console.log(value);
+  const handleTags = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const tag = e.target.name;
+    const isChecked = e.target.checked;
+    const params = new URLSearchParams(searchParams.toString());
+    
+    if (isChecked) {
+      params.set('tag', tag);
+    } else {
+      params.delete('tag');
+    }
 
-
+    router.push(`${pathName}?${params.toString()}`);
   }
 
   return (
@@ -55,7 +67,7 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
           <div className={styles.tagsList}>
             {tags.map((tag) => (
               <label key={tag} className={styles.tagItem}>
-                <input name={tag} onChange={(e) => handleTags(e.target.name)} type="checkbox" className={styles.checkbox} />
+                <input name={tag} onChange={(e) => handleTags(e)} type="checkbox" className={styles.checkbox} />
                 <span className={styles.tagName}>{tag.toUpperCase()}</span>
               </label>
             ))}

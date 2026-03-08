@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "./searchBar.module.css";
 import { FiSearch } from "react-icons/fi";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface SearchBarProps {
   placeholder?: string;
@@ -14,12 +14,20 @@ const SearchBar: React.FC<SearchBarProps> = ({
   placeholder = "Search by title...",
   className,
 }) => {
-    const router = useRouter();
-    const pathname = usePathname();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const handleSearch = (query: string) => {
-  router.push(`${pathname}?q=${encodeURIComponent(query)}`);
+    const params = new URLSearchParams(searchParams.toString());
+    
+    if (query.trim()) {
+      params.set('q', query);
+    } else {
+      params.delete('q');
+    }
 
+    router.push(`${pathname}?${params.toString()}`);
   }
 
   return (

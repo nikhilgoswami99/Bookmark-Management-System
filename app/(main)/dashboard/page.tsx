@@ -24,6 +24,7 @@ export default function Home() {
   const searchParams = useSearchParams();
 
   let searchQuery = searchParams.get('q')?.trim();
+  let tag = searchParams.get('tag')?.trim();
 
   useEffect(() => {
     const fetchBookmarks = async () => {
@@ -71,9 +72,9 @@ export default function Home() {
 
   let filteredBookmarks = bookmarks.filter((item) => {
 
-    if(!searchQuery) return true;
+    if(!searchQuery ) return true;
 
-    let query = searchQuery.toLowerCase();
+    let query = searchQuery?.toLowerCase();
 
     return (
       item.title.toLowerCase().includes(query) || item.description.toLowerCase().includes(query) || item.tags.some((tag) => tag.toLowerCase().includes(query))

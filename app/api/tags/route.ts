@@ -12,8 +12,6 @@ export async function GET() {
 
     // The .distinct() method returns an array of unique values for a field
     const uniqueTags = await Bookmark.distinct("tags", { ownerId: userId });
-
-    console.log(uniqueTags);
     
     // Sort them alphabetically for a better UI
     const sortedTags = uniqueTags.sort((a, b) => a.localeCompare(b));
