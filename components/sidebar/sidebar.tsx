@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './sidebar.module.css'
 import { AiOutlineHome } from 'react-icons/ai'
 
@@ -9,23 +9,28 @@ interface SidebarProps {
 }
 
 function Sidebar({ isOpen = false, onClose }: SidebarProps) {
-  const tags = [
-    'AI',
-    'Community',
-    'Compatibility',
-    'CSS',
-    'Design',
-    'Framework',
-    'Git',
-    'HTML',
-    'JavaScript',
-    'Layout',
-    'Learning',
-    'Performance',
-  ];
+
+  const [tags, setTags] = useState<string[]>([]);
+  
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await fetch('/api/tags');
+        const data = await response.json();
+        setTags(data);
+      } catch (error) {
+        console.error("Error fetching tags:", error);
+      }
+    };
+
+    fetchTags();
+  }, []);
 
   const handleTags = (value: any) => {
     console.log(value);
+
+
   }
 
   return (
@@ -51,7 +56,7 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
             {tags.map((tag) => (
               <label key={tag} className={styles.tagItem}>
                 <input name={tag} onChange={(e) => handleTags(e.target.name)} type="checkbox" className={styles.checkbox} />
-                <span className={styles.tagName}>{tag}</span>
+                <span className={styles.tagName}>{tag.toUpperCase()}</span>
               </label>
             ))}
           </div>

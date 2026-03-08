@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, Suspense } from "react";
 import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
 
-import styles from './clientLayout.module.css';
-import { ThemeProvider } from '@/context/ThemeContext';
+import styles from "./clientLayout.module.css";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 export default function ClientLayout({
   children,
@@ -16,7 +16,7 @@ export default function ClientLayout({
 
   // Function to toggle sidebar will be passed to Navbar
   const toggleSidebar = () => {
-    setIsSidebarOpen(prev => !prev);
+    setIsSidebarOpen((prev) => !prev);
   };
 
   // Function to close sidebar will be passed to Sidebar
@@ -30,7 +30,9 @@ export default function ClientLayout({
         <Navbar onMenuClick={toggleSidebar} />
         <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
         <main className={styles.mainContent}>
-          {children}
+          <Suspense fallback={<div>Loading content...</div>}>
+            {children}
+          </Suspense>
         </main>
       </div>
     </ThemeProvider>
