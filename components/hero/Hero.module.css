@@ -49,9 +49,7 @@
 }
 
 .primaryButton:hover {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
-  transform: translateY(-2px);
+  opacity: var(--opacity);
 }
 
 .secondaryButton {

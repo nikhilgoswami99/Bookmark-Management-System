@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./addBookmarkModal.module.css";
 import { AiOutlineClose } from "react-icons/ai";
+import { FiType, FiLink, FiAlignLeft, FiTag, FiImage } from "react-icons/fi";
 
 interface AddBookmarkModalProps {
   isOpen: boolean;
@@ -101,72 +102,87 @@ const AddBookmarkModal: React.FC<AddBookmarkModalProps> = ({
             <label htmlFor="title" className={styles.label}>
               Title
             </label>
-            <input
-              type="text"
-              id="title"
-              value={formData.title}
-              onChange={handleChange}
-              className={styles.input}
-              placeholder="e.g. Next.js Documentation"
-              required
-            />
+            <div className={styles.inputWrapper}>
+              <input
+                type="text"
+                id="title"
+                value={formData.title}
+                onChange={handleChange}
+                className={styles.input}
+                placeholder="e.g. Next.js Documentation"
+                required
+              />
+              <FiType className={styles.inputIcon} />
+            </div>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="url" className={styles.label}>
               URL
             </label>
-            <input
-              type="url"
-              id="url"
-              value={formData.url}
-              onChange={handleChange}
-              className={styles.input}
-              placeholder="https://nextjs.org"
-              required
-            />
+            <div className={styles.inputWrapper}>
+              <input
+                type="url"
+                id="url"
+                value={formData.url}
+                onChange={handleChange}
+                className={styles.input}
+                placeholder="https://nextjs.org"
+                required
+              />
+              <FiLink className={styles.inputIcon} />
+            </div>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="description" className={styles.label}>
               Description
             </label>
-            <textarea
-              id="description"
-              value={formData.description}
-              onChange={handleChange}
-              className={styles.textarea}
-              placeholder="Brief description of the site..."
-              rows={3}
-            />
+            <div className={styles.inputWrapper}>
+              <textarea
+                id="description"
+                value={formData.description}
+                onChange={handleChange}
+                className={styles.textarea}
+                placeholder="Brief description of the site..."
+                rows={3}
+              />
+              <FiAlignLeft className={styles.inputIcon} />
+            </div>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="tags" className={styles.label}>
               Tags (comma separated)
             </label>
-            <input
-              type="text"
-              id="tags"
-              value={formData.tags}
-              onChange={handleChange}
-              className={styles.input}
-              placeholder="e.g. documentation, react, framework"
-            />
+            <div className={styles.inputWrapper}>
+              <input
+                type="text"
+                id="tags"
+                value={formData.tags}
+                onChange={handleChange}
+                className={styles.input}
+                placeholder="e.g. documentation, react, framework"
+              />
+              <FiTag className={styles.inputIcon} />
+            </div>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="favicon" className={styles.label}>
               Favicon URL (Optional)
             </label>
-            <input
-              type="url"
-              id="favicon"
-              value={formData.favicon}
-              onChange={handleChange}
-              className={styles.input}
-              placeholder="https://example.com/favicon.ico"
-            />
+            <div className={styles.inputWrapper}>
+              <input
+                type="url"
+                id="favicon"
+                value={formData.favicon}
+                onChange={handleChange}
+                className={styles.input}
+                placeholder="https://example.com/favicon.ico"
+              />
+              <FiImage className={styles.inputIcon} />
+            </div>
           </div>
 
           <button type="submit" className={styles.submitButton}>

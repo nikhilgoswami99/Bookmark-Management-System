@@ -41,8 +41,8 @@
 
 .logoIcon {
   font-size: 1.5rem;
-  color: var(--accent-foreground);
-  background-color: var(--accent);
+  color: var(--primary-foreground);
+  background-color: var(--primary);
   padding: 0.5rem;
   border-radius: 5px;
   display: flex;
@@ -99,11 +99,11 @@
 
 .logoutButton {
   background-color: var(--destructive) !important;
-  color: var(--destructive-foreground) !important;
+  color: var(--primary-foreground) !important;
 }
 
 .logoutButton:hover {
-  opacity: 0.9;
+  opacity: var(--opacity);
   transform: scale(1.05);
 }
 

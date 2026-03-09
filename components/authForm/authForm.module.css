@@ -12,7 +12,7 @@
   max-width: 26rem;
   background-color: var(--card);
   border: 1px solid var(--border);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   padding: 2.5rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
@@ -86,9 +86,6 @@
   border: 1px solid var(--border);
   border-radius: 0.5rem;
   outline: none;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
 }
 
 .input::placeholder {
@@ -120,7 +117,7 @@
 }
 
 .submitBtn:hover {
-  opacity: 0.9;
+    opacity: var(--opacity);
 }
 
 .submitBtn:active {
@@ -142,6 +139,5 @@
 }
 
 .footerLink:hover {
-  opacity: 0.8;
   text-decoration: underline;
 }

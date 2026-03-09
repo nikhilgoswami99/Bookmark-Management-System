@@ -6,7 +6,7 @@ const SignIn = () => {
 
 
   return (
-    <div>
+    <div data-theme="dark">
       <AuthForm
           title="Login to your account"
           subtitle="Enter your email below to login to your account"

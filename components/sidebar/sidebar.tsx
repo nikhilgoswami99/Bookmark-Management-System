@@ -53,13 +53,13 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
       />
       <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
         {/* Navigation Section */}
-        <nav className={styles.nav}>
+        {/* <nav className={styles.nav}>
           <a href="#" className={`${styles.navItem} ${styles.active}`}>
             <AiOutlineHome className={styles.navIcon} />
             <span>Home</span>
           </a>
 
-        </nav>
+        </nav> */}
 
         {/* Tags Section */}
         <div className={styles.tagsSection}>

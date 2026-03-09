@@ -5,7 +5,7 @@
 
 .deleteBtn {
   background-color: var(--destructive);
-  color: var(--destructive-foreground);
+  color: var(--primary-foreground);
   border: none;
   padding: 0.375rem;
   border-radius: 6px;
@@ -18,7 +18,7 @@
 }
 
 .deleteBtn:hover {
-  opacity: 0.9;
+  opacity: var(--opacity);
   transform: translateY(-1px);
 }
 

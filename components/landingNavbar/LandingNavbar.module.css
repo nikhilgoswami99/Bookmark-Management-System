@@ -6,6 +6,9 @@
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  background-color: var(--background);
+  position: sticky;
+  top: 0;
 }
 
 .logoLink {
@@ -56,7 +59,5 @@
 }
 
 .navButton:hover {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
-  transform: translateY(-1px);
+  opacity: var(--opacity);
 }

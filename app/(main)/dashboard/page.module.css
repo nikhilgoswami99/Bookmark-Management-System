@@ -15,7 +15,7 @@
 }
 
 .heading {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--foreground);
   margin: 0;
@@ -25,10 +25,10 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--accent);
-  color: var(--accent-foreground);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   border: 1px solid var(--border);
-  padding: 0.75rem 1.25rem;
+  padding: 0.40rem 1.25rem;
   border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
@@ -36,9 +36,8 @@
 }
 
 .addButton:hover {
-  background-color: var(--primary);
   color: var(--primary-foreground);
-  transform: translateY(-1px);
+  opacity: var(--opacity);
 }
 
 .plusIcon {

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import AddBookmarkModal from "@/components/addBookmarkModal/AddBookmarkModal";
 import { HiPlus } from "react-icons/hi";
 import { useSearchParams } from "next/navigation";
+import Loader from "@/components/loader/Loader";
 
 interface Bookmark {
   _id: string;
@@ -21,6 +22,7 @@ interface Bookmark {
 export default function Home() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
 
   let searchQuery = searchParams.get('q')?.trim();
@@ -34,6 +36,8 @@ export default function Home() {
         setBookmarks(data);
       } catch (error) {
         console.error("Error fetching bookmarks:", error);
+      } finally{
+        setLoading(false);
       }
     };
 
@@ -101,24 +105,28 @@ export default function Home() {
           </button>
         </div>
         
-        <div className={styles.grid}>
-          {filteredBookmarks.map((bookmark) => (
-            <BookmarkCard
-              key={bookmark._id}
-              _id={bookmark._id}
-              title={bookmark.title}
-              url={bookmark.url}
-              description={bookmark.description}
-              tags={bookmark.tags}
-              date={new Date(bookmark.createdAt).toLocaleDateString(undefined, {
-                day: 'numeric',
-                month: 'short'
-              })}
-              favicon={bookmark.favicon}
-              onDelete={() => handleDelete(bookmark._id)}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <Loader />
+        ) : (
+          <div className={styles.grid}>
+            {filteredBookmarks.map((bookmark) => (
+              <BookmarkCard
+                key={bookmark._id}
+                _id={bookmark._id}
+                title={bookmark.title}
+                url={bookmark.url}
+                description={bookmark.description}
+                tags={bookmark.tags}
+                date={new Date(bookmark.createdAt).toLocaleDateString(undefined, {
+                  day: 'numeric',
+                  month: 'short'
+                })}
+                favicon={bookmark.favicon}
+                onDelete={() => handleDelete(bookmark._id)}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       <AddBookmarkModal

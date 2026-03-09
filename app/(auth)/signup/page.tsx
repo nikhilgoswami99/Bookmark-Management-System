@@ -4,7 +4,7 @@ import AuthForm from '@/components/authForm/AuthForm'
 
 const SignUp = () => {
   return (
-    <div>
+    <div data-theme="dark">
 
         <AuthForm
           title="Create an account"

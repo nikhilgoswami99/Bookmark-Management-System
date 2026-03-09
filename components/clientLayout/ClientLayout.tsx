@@ -3,6 +3,7 @@
 import React, { useState, Suspense } from "react";
 import Navbar from "@/components/navbar/navbar";
 import Sidebar from "@/components/sidebar/sidebar";
+import Loader from "@/components/loader/Loader";
 
 import styles from "./clientLayout.module.css";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -30,7 +31,7 @@ export default function ClientLayout({
         <Navbar onMenuClick={toggleSidebar} />
         <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
         <main className={styles.mainContent}>
-          <Suspense fallback={<div>Loading content...</div>}>
+          <Suspense fallback={<Loader />}>
             {children}
           </Suspense>
         </main>
