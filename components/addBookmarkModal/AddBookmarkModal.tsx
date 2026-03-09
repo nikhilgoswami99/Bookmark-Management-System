@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import styles from "./addBookmarkModal.module.css";
 import { AiOutlineClose } from "react-icons/ai";

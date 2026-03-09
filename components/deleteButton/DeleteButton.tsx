@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import styles from './deleteButton.module.css';
 import { FiTrash2 } from 'react-icons/fi';

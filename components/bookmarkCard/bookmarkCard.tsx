@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react'
 import styles from './bookmarkCard.module.css'
 import { FiExternalLink } from 'react-icons/fi'
