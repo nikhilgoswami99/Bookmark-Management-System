@@ -28,8 +28,12 @@ export default function ClientLayout({
   return (
     <ThemeProvider>
       <div className={styles.layoutWrapper}>
-        <Navbar onMenuClick={toggleSidebar} />
-        <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+        <Suspense fallback={null}>
+          <Navbar onMenuClick={toggleSidebar} />
+        </Suspense>
+        <Suspense fallback={null}>
+          <Sidebar isOpen={isSidebarOpen} onClose={closeSidebar} />
+        </Suspense>
         <main className={styles.mainContent}>
           <Suspense fallback={<Loader />}>
             {children}

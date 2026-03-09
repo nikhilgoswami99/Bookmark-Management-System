@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from 'react'
 import styles from './sidebar.module.css'
 import { AiOutlineHome } from 'react-icons/ai'
