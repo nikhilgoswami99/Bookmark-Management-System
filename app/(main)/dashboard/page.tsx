@@ -1,9 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./page.module.css";
 import BookmarkCard from "@/components/bookmarkCard/bookmarkCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import AddBookmarkModal from "@/components/addBookmarkModal/AddBookmarkModal";
 import { HiPlus } from "react-icons/hi";
 import { useSearchParams } from "next/navigation";
@@ -19,7 +18,7 @@ interface Bookmark {
   createdAt: string;
 }
 
-export default function Home() {
+function DashboardContent() {
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -36,7 +35,7 @@ export default function Home() {
         setBookmarks(data);
       } catch (error) {
         console.error("Error fetching bookmarks:", error);
-      } finally{
+      } finally {
         setLoading(false);
       }
     };
@@ -47,7 +46,6 @@ export default function Home() {
   const handleAddBookmark = async (newBookmarkData: any) => {
     console.log("New bookmark added:", newBookmarkData);
     try {
-      // Refresh bookmarks after adding
       const response = await fetch("/api/bookmarks");
       const data = await response.json();
       setBookmarks(data);
@@ -64,7 +62,6 @@ export default function Home() {
       });
 
       if (response.ok) {
-        // Optimistically update the UI by filtering out the deleted bookmark
         setBookmarks((prev) => prev.filter((bookmark) => bookmark._id !== id));
       } else {
         console.error("Failed to delete bookmark");
@@ -75,28 +72,19 @@ export default function Home() {
   };
 
   let filteredBookmarks = bookmarks.filter((item) => {
-
     let query = searchQuery?.toLowerCase();
-
     let selectedTag = tag?.toLowerCase();
-
     let isQueryMatches = !query || item.title.toLowerCase().includes(query) || item.description.toLowerCase().includes(query);
-
-    let isTagMatches = !selectedTag || item.tags.some((tag) => tag.toLowerCase().includes(selectedTag))
-
+    let isTagMatches = !selectedTag || item.tags.some((t) => t.toLowerCase().includes(selectedTag!));
     return isQueryMatches && isTagMatches;
-    
-
   });
-
-  console.log(filteredBookmarks);
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
         <div className={styles.headerWrapper}>
           <h1 className={styles.heading}>All Bookmarks</h1>
-          <button 
+          <button
             className={styles.addButton}
             onClick={() => setIsModalOpen(true)}
           >
@@ -104,7 +92,7 @@ export default function Home() {
             Add Bookmark
           </button>
         </div>
-        
+
         {loading ? (
           <Loader />
         ) : (
@@ -119,7 +107,7 @@ export default function Home() {
                 tags={bookmark.tags}
                 date={new Date(bookmark.createdAt).toLocaleDateString(undefined, {
                   day: 'numeric',
-                  month: 'short'
+                  month: 'short',
                 })}
                 favicon={bookmark.favicon}
                 onDelete={() => handleDelete(bookmark._id)}
@@ -138,3 +126,10 @@ export default function Home() {
   );
 }
 
+export default function Home() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <DashboardContent />
+    </Suspense>
+  );
+}
