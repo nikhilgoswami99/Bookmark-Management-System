@@ -3,35 +3,34 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: var(--bg-color);
+  background-color: var(--background);
   padding: 2rem;
 }
 
 .formContainer {
   width: 100%;
   max-width: 26rem;
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: 1rem;
   padding: 2.5rem;
-  box-shadow: 0 4px 24px var(--shadow-color);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
 
 .header {
-  text-align: center;
   margin-bottom: 2rem;
 }
 
 .title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--foreground);
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
 }
 
 .form {
@@ -41,13 +40,13 @@
 }
 
 .errorMessage {
-  background-color: rgba(255, 0, 0, 0.1);
-  color: #ff4d4d;
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
   padding: 0.75rem;
   border-radius: 0.5rem;
   font-size: 0.85rem;
   text-align: center;
-  border: 1px solid rgba(255, 0, 0, 0.2);
+  border: 1px solid var(--destructive-foreground);
 }
 
 .inputGroup {
@@ -59,16 +58,32 @@
 .label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--foreground);
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 0.8rem;
+  color: var(--muted-foreground);
+  font-size: 1.1rem;
+  pointer-events: none;
+  transition: color 0.2s ease;
+  z-index: 10;
 }
 
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.55rem 1rem 0.55rem 2.5rem;
   font-size: 0.95rem;
-  color: var(--text-main);
-  background-color: var(--input-bg);
-  border: 1px solid var(--border-color);
+  color: var(--foreground);
+  background-color: var(--muted);
+  border: 1px solid var(--border);
   border-radius: 0.5rem;
   outline: none;
   transition:
@@ -77,21 +92,24 @@
 }
 
 .input::placeholder {
-  color: var(--text-placeholder);
+  color: var(--muted-foreground);
 }
 
 .input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 72, 69, 0.15);
+  border-color: var(--primary);
+}
+
+.input:focus + .inputIcon {
+  color: var(--primary);
 }
 
 .submitBtn {
   width: 100%;
-  padding: 0.8rem;
-  font-size: 1rem;
+  padding: 0.6rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  color: var(--accent-text);
-  background-color: var(--primary-color);
+  color: var(--primary-foreground);
+  background-color: var(--primary);
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -113,11 +131,11 @@
   text-align: center;
   margin-top: 1.5rem;
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
 }
 
 .footerLink {
-  color: var(--primary-color);
+  color: var(--primary);
   font-weight: 600;
   text-decoration: none;
   transition: opacity 0.2s ease;

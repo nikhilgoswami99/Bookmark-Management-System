@@ -15,7 +15,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--primary);
   letter-spacing: -0.05em;
 }
 
@@ -28,7 +28,7 @@
 .navLink {
   text-decoration: none;
   font-weight: 500;
-  color: var(--text-main);
+  color: var(--foreground);
   transition: color 0.2s;
   background: none;
   border: none;
@@ -39,13 +39,13 @@
 }
 
 .navLink:hover {
-  color: var(--primary-color);
+  color: var(--primary);
 }
 
 .navButton {
   text-decoration: none;
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: 0.6rem 1.2rem;
   border-radius: 9999px;
   font-weight: 600;
@@ -56,6 +56,7 @@
 }
 
 .navButton:hover {
-  background-color: var(--accent-bg);
+  background-color: var(--accent);
+  color: var(--accent-foreground);
   transform: translateY(-1px);
 }

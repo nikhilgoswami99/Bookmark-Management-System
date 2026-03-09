@@ -67,7 +67,13 @@ function Sidebar({ isOpen = false, onClose }: SidebarProps) {
           <div className={styles.tagsList}>
             {tags.map((tag) => (
               <label key={tag} className={styles.tagItem}>
-                <input name={tag} onChange={(e) => handleTags(e)} type="checkbox" className={styles.checkbox} />
+                <input 
+                  name={tag} 
+                  onChange={(e) => handleTags(e)} 
+                  type="checkbox" 
+                  className={styles.checkbox} 
+                  checked={searchParams.get('tag') === tag}
+                />
                 <span className={styles.tagName}>{tag.toUpperCase()}</span>
               </label>
             ))}

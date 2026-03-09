@@ -14,8 +14,8 @@
 .gradientText {
   background: linear-gradient(
     135deg,
-    var(--primary-color),
-    var(--secondary-color)
+    var(--primary),
+    var(--secondary)
   );
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -23,7 +23,7 @@
 
 .subtitle {
   font-size: 1.5rem;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
   max-width: 800px;
   margin: 0 auto 2.5rem;
   line-height: 1.4;
@@ -38,27 +38,27 @@
 
 .primaryButton {
   text-decoration: none;
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: 1rem 2rem;
   border-radius: 0.8rem;
   font-size: 1.1rem;
   font-weight: 600;
   transition: all 0.2s;
-  box-shadow: 0 4px 15px var(--shadow-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .primaryButton:hover {
-  background-color: var(--accent-bg);
+  background-color: var(--accent);
+  color: var(--accent-foreground);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px var(--shadow-color);
 }
 
 .secondaryButton {
   text-decoration: none;
   background-color: transparent;
-  color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  color: var(--foreground);
+  border: 2px solid var(--border);
   padding: calc(1rem - 2px) 2rem;
   border-radius: 0.8rem;
   font-size: 1.1rem;
@@ -67,7 +67,7 @@
 }
 
 .secondaryButton:hover {
-  background-color: var(--primary-light);
+  background-color: var(--muted);
   transform: translateY(-2px);
 }
 

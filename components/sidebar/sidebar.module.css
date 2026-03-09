@@ -1,12 +1,12 @@
 .sidebar {
   width: 15rem;
-  background-color: var(--surface-color);
+  background-color: var(--card);
   height: calc(100vh - 3.75rem);
   position: fixed;
   left: 0;
   top: 3.75rem;
   overflow-y: auto;
-  border-right: 0.0625rem solid var(--border-color);
+  border-right: 1px solid var(--border);
   padding: 1rem 0;
 }
 
@@ -22,7 +22,7 @@
   gap: 0.75rem;
   padding: 0.625rem 0.875rem;
   border-radius: 0.5rem;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -31,13 +31,13 @@
 }
 
 .navItem:hover {
-  background-color: var(--primary-light);
-  color: var(--text-main);
+  background-color: var(--muted);
+  color: var(--foreground);
 }
 
 .navItem.active {
-  background-color: var(--primary-light);
-  color: var(--text-main);
+  background-color: var(--muted);
+  color: var(--foreground);
 }
 
 .navIcon {
@@ -53,7 +53,7 @@
 .tagsHeader {
   font-size: 0.6875rem;
   font-weight: 600;
-  color: var(--text-placeholder);
+  color: var(--muted-foreground);
   letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
   padding: 0 0.875rem;
@@ -77,33 +77,33 @@
 }
 
 .tagItem:hover {
-  background-color: var(--primary-light);
+  background-color: var(--muted);
 }
 
 .checkbox {
   width: 1rem;
   height: 1rem;
-  border: 0.09375rem solid var(--text-placeholder);
+  border: 1.5px solid var(--muted-foreground);
   border-radius: 0.25rem;
   cursor: pointer;
   flex-shrink: 0;
-  accent-color: var(--primary-color);
+  accent-color: var(--primary);
 }
 
 .checkbox:hover {
-  border-color: var(--primary-color);
+  border-color: var(--primary);
 }
 
 .tagName {
   flex: 1;
   font-size: 0.9375rem;
-  color: var(--text-main);
+  color: var(--foreground);
   font-weight: 400;
 }
 
 .tagCount {
   font-size: 0.8125rem;
-  color: var(--text-placeholder);
+  color: var(--muted-foreground);
   font-weight: 500;
   min-width: 1.25rem;
   text-align: right;
@@ -119,12 +119,12 @@
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: var(--border);
   border-radius: 0.1875rem;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--muted-foreground);
 }
 
 /* Responsive Design */
@@ -138,7 +138,8 @@
     top: 0;
     height: 100vh;
     border-right: none;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--card);
   }
 
   .sidebar.open {

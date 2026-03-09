@@ -5,6 +5,7 @@ import styles from "./authForm.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { FiUser, FiMail, FiLock } from "react-icons/fi";
 
 type AuthFormProps = {
   title: string;
@@ -110,14 +111,17 @@ const AuthForm = ({
               <label className={styles.label} htmlFor="name">
                 Full Name
               </label>
-              <input
-                className={styles.input}
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your full name"
-                onChange={handleChange}
-              />
+              <div className={styles.inputWrapper}>
+                <input
+                  className={styles.input}
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your full name"
+                  onChange={handleChange}
+                />
+                <FiUser className={styles.inputIcon} />
+              </div>
             </div>
           )}
 
@@ -125,28 +129,34 @@ const AuthForm = ({
             <label className={styles.label} htmlFor="email">
               Email
             </label>
-            <input
-              className={styles.input}
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              onChange={handleChange}
-            />
+            <div className={styles.inputWrapper}>
+              <input
+                className={styles.input}
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                onChange={handleChange}
+              />
+              <FiMail className={styles.inputIcon} />
+            </div>
           </div>
 
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="password">
               Password
             </label>
-            <input
-              className={styles.input}
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              onChange={handleChange}
-            />
+            <div className={styles.inputWrapper}>
+              <input
+                className={styles.input}
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                onChange={handleChange}
+              />
+              <FiLock className={styles.inputIcon} />
+            </div>
           </div>
 
           <button 

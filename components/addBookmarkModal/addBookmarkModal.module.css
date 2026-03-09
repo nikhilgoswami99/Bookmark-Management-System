@@ -14,18 +14,18 @@
 }
 
 .modalContent {
-  background-color: var(--surface-color);
+  background-color: var(--card);
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: var(--radius);
   width: 90%;
-  max-width: 600px; /* Increased width */
-  box-shadow: 0 4px 6px -1px var(--shadow-color);
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--foreground);
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-height: 90vh; /* Prevent it from being too tall */
+  max-height: 90vh;
   overflow-y: auto;
 }
 
@@ -37,16 +37,16 @@
 }
 
 .heading {
-  font-size: 1.25rem; /* Slightly smaller heading */
-  font-weight: 600;
-  color: var(--text-main);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--foreground);
   margin: 0;
 }
 
 .closeButton {
   background: none;
   border: none;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
@@ -57,8 +57,8 @@
 }
 
 .closeButton:hover {
-  background-color: var(--border-color);
-  color: var(--text-main);
+  background-color: var(--muted);
+  color: var(--foreground);
 }
 
 .form {
@@ -67,26 +67,22 @@
   gap: 1rem;
 }
 
-.formGroup {
-  margin-bottom: 0.5rem;
-}
-
 .label {
   display: block;
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--muted-foreground);
 }
 
 .input,
 .textarea {
   width: 100%;
-  padding: 0.625rem;
-  border-radius: 6px;
-  border: 1px solid var(--border-color);
-  background-color: var(--input-bg);
-  color: var(--text-main);
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background-color: var(--muted);
+  color: var(--foreground);
   font-size: 0.875rem;
   transition: border-color 0.2s, box-shadow 0.2s;
   font-family: inherit;
@@ -94,31 +90,25 @@
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--primary-color);
+  border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 0 2px var(--border-color);
-}
-
-.textarea {
-  min-height: 80px; /* Reduced minimum height */
-  resize: vertical;
+  box-shadow: 0 0 0 2px var(--ring);
 }
 
 .submitButton {
-  padding: 0.625rem 1.25rem;
-  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
   font-weight: 600;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s;
-  border: 0.0625rem solid var(--border-color);
-  background-color: var(--accent-bg);
-  color: var(--accent-text);
+  border: none;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   margin-top: 0.5rem;
   width: 100%;
 }
 
 .submitButton:hover {
-  background-color: var(--bg-color);
-  border-color: var(--primary-color);
+  opacity: 0.9;
 }

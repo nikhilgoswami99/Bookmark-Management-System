@@ -4,8 +4,8 @@
 }
 
 .deleteBtn {
-  background-color: var(--error-color);
-  color: white;
+  background-color: var(--destructive);
+  color: var(--destructive-foreground);
   border: none;
   padding: 0.375rem;
   border-radius: 6px;
@@ -15,13 +15,10 @@
   justify-content: center;
   font-size: 1rem;
   transition: all 0.2s ease;
-  box-shadow: 0 2px 4px rgba(239, 68, 68, 0.1);
 }
 
 .deleteBtn:hover {
-  background-color: var(--error-color);
   opacity: 0.9;
-  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.2);
   transform: translateY(-1px);
 }
 

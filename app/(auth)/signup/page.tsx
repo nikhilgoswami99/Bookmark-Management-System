@@ -1,15 +1,14 @@
 
-import styles from './signUp.module.css'
 import AuthForm from '@/components/authForm/AuthForm'
 
 
 const SignUp = () => {
   return (
-    <div className={styles.container}>
+    <div>
 
         <AuthForm
-          title="Create Account"
-          subtitle="Get started with Sangrah"
+          title="Create an account"
+          subtitle="Enter your information below to create your account"
           buttonText="Sign Up"
           footerText="Already have an account?"
           footerLinkText="Sign In"
