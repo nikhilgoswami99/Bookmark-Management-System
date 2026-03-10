@@ -28,7 +28,7 @@
   background-color: var(--primary);
   color: var(--primary-foreground);
   border: 1px solid var(--border);
-  padding: 0.40rem 1.25rem;
+  padding: 0.40rem 0.5rem;
   border-radius: 0.5rem;
   font-weight: 600;
   cursor: pointer;
