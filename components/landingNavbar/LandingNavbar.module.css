@@ -2,17 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  max-width: 1200px;
+  padding: 1rem 5rem;
   width: 100%;
   margin: 0 auto;
-  background-color: var(--background);
-  position: sticky;
-  top: 0;
+  z-index: 100;
 }
 
 .logoLink {
   text-decoration: none;
+  z-index: 110;
 }
 
 .logo {
@@ -20,6 +18,16 @@
   font-weight: 700;
   color: var(--primary);
   letter-spacing: -0.05em;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  z-index: 110;
+  padding: 0.5rem;
 }
 
 .nav {
@@ -59,5 +67,41 @@
 }
 
 .navButton:hover {
-  opacity: var(--opacity);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .menuButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--background);
+    flex-direction: column;
+    justify-content: center;
+    transition: right 0.3s ease;
+    z-index: 100;
+  }
+
+  .navOpen {
+    right: 0;
+  }
+
+  .navLink, .navButton {
+    font-size: 1.25rem;
+    width: 80%;
+    text-align: center;
+  }
+
 }

@@ -57,6 +57,11 @@ const featuresData = [
 const Features = () => {
   return (
     <div className={styles.featuresSection}>
+      <h2 className={styles.heading}>Everything you need to manage your bookmarks</h2>
+        <p className={styles.subtitle}>
+        One place for all your inspiration, knowledge, and research.
+        Beautifully organized and instantly searchable.
+      </p>
       <div className={styles.featuresGrid}>
         {featuresData.map((feature, index) => (
           <div key={index} className={styles.featureCard}>
