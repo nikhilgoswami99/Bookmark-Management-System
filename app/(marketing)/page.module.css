@@ -4,6 +4,7 @@
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
   position: relative;
+  /* overflow-x: hidden; */
 }
 
 .main {

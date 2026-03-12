@@ -7,6 +7,11 @@
   margin: 0 auto;
   z-index: 100;
   transition: padding 0.3s ease;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(15px);
+  background-color: color-mix(in srgb, var(--background) 30%, transparent 70%);
+  border-bottom: 1px solid var(--border);
 }
 
 @media (max-width: 1024px) {

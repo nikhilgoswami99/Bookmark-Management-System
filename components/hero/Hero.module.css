@@ -3,7 +3,7 @@
   margin-bottom: 5rem;
   position: relative;
   z-index: 1;
-  width: 80%;
+  width: 100%;
 }
 
 .hero::before {
@@ -12,17 +12,16 @@
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /* max-width: 2200px; */
+  max-width: 1000px;
   /* max-height: 1000px; */
   width: 100vw;
   height: 100vw;
   background: radial-gradient(circle, var(--primary) 0%, transparent 80%);
   opacity: 0.35;
-  filter: blur(50px);
+  filter: blur(80px);
   z-index: -1;
   pointer-events: none;
 }
-
 
 .title {
   font-size: clamp(3rem, 10vw, 4rem);
@@ -125,9 +124,10 @@
   }
 
   .hero::before {
-    top: 30%;
-    max-height: none;
+    top: 50%;
+    min-height: 1400px;
     max-width: none;
     opacity: 0.5;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 50%);
   }
 }
