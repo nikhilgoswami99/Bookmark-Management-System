@@ -15,7 +15,7 @@
 }
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   color: var(--muted-foreground);
   margin: 0 auto 2rem;
   line-height: 1.4;
@@ -24,7 +24,7 @@
 }
 
 .heading {
-  font-size: clamp(2.5rem, 5vw, 2rem);
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
@@ -78,11 +78,37 @@
   margin: 0;
 }
 
+@media (max-width: 1024px) {
+  .featuresSection {
+    width: 90%;
+  }
+
+  .heading,
+  .subtitle {
+    width: 90%;
+  }
+}
+
 @media (max-width: 768px) {
+  .featuresSection {
+    width: 100%;
+    padding: 2rem 0;
+  }
+
   .featuresGrid {
     grid-template-columns: 1fr;
   }
-  .featuresSection{
+
+  .heading,
+  .subtitle {
     width: 100%;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
   }
 }

@@ -6,6 +6,13 @@
   width: 100%;
   margin: 0 auto;
   z-index: 100;
+  transition: padding 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 1rem 2rem;
+  }
 }
 
 .logoLink {
@@ -100,7 +107,6 @@
 
   .navLink, .navButton {
     font-size: 1.25rem;
-    width: 80%;
     text-align: center;
   }
 

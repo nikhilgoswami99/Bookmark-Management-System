@@ -43,7 +43,7 @@
 } */
 
 .subtitle {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
   color: var(--muted-foreground);
   max-width: 800px;
   margin: 0 auto 2.5rem;
@@ -90,9 +90,38 @@
   transform: translateY(-2px);
 }
 
+@media (max-width: 1024px) {
+  .hero {
+    width: 90%;
+  }
+
+  .subtitle {
+    font-size: 1.15rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
   .title {
-    font-size: 3rem;
+    font-size: 2.25rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .ctaGroup {
+    align-items: center;
   }
 
   .hero::before {
