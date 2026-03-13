@@ -1,6 +1,7 @@
 import LandingNavbar from '@/components/landingNavbar/LandingNavbar';
 import styles from './page.module.css';
 import Hero from '@/components/hero/Hero';
+import PlatformsSection from '@/components/platformsSection/PlatformsSection';
 import Features from '@/components/features/Features';
 
 export default function LandingPage() {
@@ -10,6 +11,7 @@ export default function LandingPage() {
       
       <main className={styles.main}>
         <Hero />
+        <PlatformsSection />
         <Features />
       </main>
 

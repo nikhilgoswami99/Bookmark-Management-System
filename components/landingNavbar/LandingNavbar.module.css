@@ -9,8 +9,8 @@
   transition: padding 0.3s ease;
   position: sticky;
   top: 0;
-  backdrop-filter: blur(15px);
-  background-color: color-mix(in srgb, var(--background) 30%, transparent 70%);
+  backdrop-filter: blur(16px);
+  background-color: color-mix(in srgb, var(--background) 10%, transparent 90%);
   border-bottom: 1px solid var(--border);
 }
 
@@ -52,17 +52,18 @@
   text-decoration: none;
   font-weight: 500;
   color: var(--foreground);
-  transition: color 0.2s;
-  background: none;
+  transition: all 0.3s ease;
+  background: transparent;
   border: none;
-  padding: 0;
   cursor: pointer;
-  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  /* font-size: 1rem; */
   font-family: inherit;
 }
 
 .navLink:hover {
-  color: var(--primary);
+  background-color: var(--primary);
+  border-radius: 30px;
 }
 
 .navButton {
@@ -70,7 +71,7 @@
   background-color: var(--primary);
   color: var(--primary-foreground);
   padding: 0.6rem 1.2rem;
-  border-radius: 9999px;
+  border-radius: 30px;
   font-weight: 600;
   transition: all 0.2s;
   border: none;
@@ -96,18 +97,19 @@
   .nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 100%;
     height: 100vh;
     background-color: var(--background);
     flex-direction: column;
     justify-content: center;
-    transition: right 0.3s ease;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
     z-index: 100;
   }
 
   .navOpen {
-    right: 0;
+    transform: translateX(0);
   }
 
   .navLink, .navButton {
