@@ -23,10 +23,13 @@
   .main {
     padding: 2rem 1rem;
   }
+    .footer {
+    padding: 2rem 1rem;
+  }
 }
 
 .footer {
-  padding: 3rem 2rem;
+  padding: 1rem;
   text-align: center;
   color: var(--muted-foreground);
   border-top: 1px solid var(--border);
@@ -34,9 +37,4 @@
   font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 2rem 1rem;
-  }
-}
 

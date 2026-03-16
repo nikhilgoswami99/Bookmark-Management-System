@@ -57,26 +57,38 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   font-size: 0.75rem;
-  color: white;
+  background-color: color-mix(in srgb, var(--foreground) 7%, transparent);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.favicon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 /* Specific Platform Colors */
-.twitter { background-color: #000000; }
-.youtube { background-color: #FF0000; }
-.reddit { background-color: #FF4500; }
-.github { background-color: #2b3137; }
-.instagram { background-image: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-.linkedin { background-color: #0077b5; }
-.stackoverflow { background-color: #f48024; }
-.medium { background-color: #000000; }
-.hackernews { background-color: #ff6600; }
-.pinterest { background-image: radial-gradient(#bd081c, #bd081c); }
-.devto { background-color: #000000; border: 1px solid #ffffff; }
-.any { background-color: var(--primary); }
+/* Specific Platform Styles - Adjusted for favicons */
+.twitter { background-color: rgba(0, 0, 0, 0.05); }
+.youtube { background-color: rgba(255, 0, 0, 0.05); }
+.reddit { background-color: rgba(255, 69, 0, 0.05); }
+.github { background-color: rgba(43, 49, 55, 0.05); }
+.instagram { background-color: rgba(225, 48, 108, 0.05); }
+.linkedin { background-color: rgba(0, 119, 181, 0.05); }
+.stackoverflow { background-color: rgba(244, 128, 36, 0.05); }
+.medium { background-color: rgba(0, 0, 0, 0.05); }
+.hackernews { background-color: rgba(255, 102, 0, 0.05); }
+.pinterest { background-color: rgba(189, 8, 28, 0.05); }
+.devto { background-color: rgba(0, 0, 0, 0.05); }
+.notion { background-color: rgba(0, 0, 0, 0.05); }
+.substack { background-color: rgba(255, 103, 53, 0.05); }
+.any { background-color: var(--primary); color: var(--primary-foreground); }
 
 .stepsContainer {
   display: grid;

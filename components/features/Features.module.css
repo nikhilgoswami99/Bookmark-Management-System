@@ -35,7 +35,7 @@
 
 .featureCard {
   background-color: var(--card);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 1rem;
   border: 2px solid var(--border);
   text-align: left;

@@ -5,18 +5,20 @@ import { HiGlobeAlt } from 'react-icons/hi';
 import styles from './PlatformsSection.module.css';
 
 const platforms = [
-  { name: 'Twitter / X', initials: 'X', class: styles.twitter },
-  { name: 'YouTube', initials: 'YT', class: styles.youtube },
-  { name: 'Reddit', initials: 'R', class: styles.reddit },
-  { name: 'GitHub', initials: 'GH', class: styles.github },
-  { name: 'Instagram', initials: 'IG', class: styles.instagram },
-  { name: 'LinkedIn', initials: 'Li', class: styles.linkedin },
-  { name: 'Stack Overflow', initials: 'SO', class: styles.stackoverflow },
-  { name: 'Medium', initials: 'M', class: styles.medium },
-  { name: 'Hacker News', initials: 'HN', class: styles.hackernews },
-  { name: 'Pinterest', initials: 'Pi', class: styles.pinterest },
-  { name: 'Dev.to', initials: 'D', class: styles.devto },
-  { name: 'Any Website', initials: <HiGlobeAlt />, class: styles.any, isIcon: true },
+  { name: 'Twitter / X', domain: 'x.com', class: styles.twitter },
+  { name: 'YouTube', domain: 'youtube.com', class: styles.youtube },
+  { name: 'Reddit', domain: 'reddit.com', class: styles.reddit },
+  { name: 'GitHub', domain: 'github.com', class: styles.github },
+  { name: 'Instagram', domain: 'instagram.com', class: styles.instagram },
+  { name: 'LinkedIn', domain: 'linkedin.com', class: styles.linkedin },
+  { name: 'Stack Overflow', domain: 'stackoverflow.com', class: styles.stackoverflow },
+  { name: 'Medium', domain: 'medium.com', class: styles.medium },
+  { name: 'Hacker News', domain: 'news.ycombinator.com', class: styles.hackernews },
+  { name: 'Pinterest', domain: 'pinterest.com', class: styles.pinterest },
+  { name: 'Dev.to', domain: 'dev.to', class: styles.devto },
+  { name: 'Notion', domain: 'notion.so', class: styles.notion },
+  { name: 'Substack', domain: 'substack.com', class: styles.substack },
+  { name: 'Any Website', domain: '', class: styles.any, isIcon: true },
 ];
 
 const steps = [
@@ -51,7 +53,15 @@ const PlatformsSection = () => {
         {platforms.map((platform, index) => (
           <div key={index} className={styles.platformPill}>
             <div className={`${styles.iconBox} ${platform.class}`}>
-              {platform.initials}
+              {platform.isIcon ? (
+                <HiGlobeAlt size={20} />
+              ) : (
+                <img 
+                  src={`https://www.google.com/s2/favicons?sz=64&domain=${platform.domain}`} 
+                  alt={platform.name}
+                  className={styles.favicon}
+                />
+              )}
             </div>
             <span>{platform.name}</span>
           </div>
