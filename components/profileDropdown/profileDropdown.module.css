@@ -1,0 +1,146 @@
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.profileTrigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+}
+
+.profileTrigger:hover {
+  background-color: var(--muted);
+}
+
+.avatarWrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+.profileTrigger:hover .avatarWrapper {
+  border-color: var(--primary);
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chevron {
+  color: var(--muted-foreground);
+  transition: transform 0.2s ease;
+}
+
+.chevronRotated {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: 15rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  z-index: 100;
+  animation: slideIn 0.2s ease-out;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.userInfo {
+  padding: 0.75rem 1rem;
+}
+
+.userName {
+  font-weight: 600;
+  color: var(--foreground);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--border);
+  margin: 0.5rem 0;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menuItem:hover {
+  background-color: var(--muted);
+}
+
+.itemIcon {
+  font-size: 1.1rem;
+  color: var(--muted-foreground);
+}
+
+.logoutItem {
+  color: var(--destructive);
+}
+
+.logoutItem:hover {
+  background-color: oklch(0.704 0.191 22.216 / 10%);
+}
+
+.logoutItem .itemIcon {
+  color: var(--destructive);
+}
+
+@media (max-width: 480px) {
+  .dropdownMenu {
+    width: 12rem;
+  }
+}

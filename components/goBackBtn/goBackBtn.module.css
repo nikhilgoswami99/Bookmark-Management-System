@@ -1,0 +1,26 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: fit-content;
+}
+
+.btn:hover {
+  background-color: var(--secondary);
+  color: var(--foreground);
+  border-color: var(--primary);
+  transform: translateX(-4px);
+}
+
+.icon {
+  font-size: 1.125rem;
+}
