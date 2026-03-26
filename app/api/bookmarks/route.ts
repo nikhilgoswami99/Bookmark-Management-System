@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/connectDB";
 import Bookmark from "@/lib/models/bookmark";
 import { getSession } from "@/lib/getSession";
+import { bookmarkSchema } from "@/lib/validators/bookmarkSchema";
 
 export async function GET() {
   try {
@@ -33,9 +34,19 @@ export async function POST(req: Request) {
     await connectDB();
     
     const body = await req.json();
-    const { title, url, description, tags, favicon } = body;
     
-    const bookmark = await Bookmark.create({
+    // Validate with Zod
+    const validation = bookmarkSchema.safeParse(body);
+    if (!validation.success) {
+      return NextResponse.json(
+        { message: "Validation failed", errors: validation.error.flatten().fieldErrors },
+        { status: 400 }
+      );
+    }
+
+    const { title, url, description, tags, favicon } = validation.data;
+    
+    await Bookmark.create({
       title,
       url,
       description,

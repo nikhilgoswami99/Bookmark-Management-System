@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { HiOutlineMail, HiPencil } from "react-icons/hi";
+import { HiOutlineMail } from "react-icons/hi";
 import styles from "./page.module.css";
 import GoBackBtn from "@/components/goBackBtn/GoBackBtn";
+import Avatar from "@/components/avatar/Avatar";
 import { useAuth } from "@/context/AuthContext";
+import { uploadProfileImage } from "@/lib/cloudinary";
 
 interface FormState {
   name: string;
@@ -16,6 +18,7 @@ export default function ProfilePage() {
   const [form, setForm] = useState<FormState>({
     name: "",
   });
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   /* ── Sync form with context user ── */
   useEffect(() => {
@@ -30,16 +33,31 @@ export default function ProfilePage() {
   const handleSave = async () => {
     setSaving(true);
     try {
+      let profilePicUrl = user?.profilePic;
+
+      // 1. Upload new image if chosen
+      if (selectedFile) {
+        const uploadedUrl = await uploadProfileImage(selectedFile);
+        if (uploadedUrl) {
+          profilePicUrl = uploadedUrl;
+        }
+      }
+
+      // 2. Patch details to backend
       const res = await fetch("/api/me", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          ...form,
+          profilePic: profilePicUrl,
+        }),
       });
 
       if (res.ok) {
         const data = await res.json();
         // Update global auth state
         setUser(data.user);
+        setSelectedFile(null); // clear staging
       }
     } catch (err) {
       console.error("Failed to update profile:", err);
@@ -48,9 +66,6 @@ export default function ProfilePage() {
     }
   };
 
-  /* ── Avatar initial ── */
-  const getInitial = (name: string) =>
-    name ? name.charAt(0).toUpperCase() : "?";
 
   /* ──────────────── Skeleton ────────────────────────────────── */
   if (loading) {
@@ -125,36 +140,12 @@ export default function ProfilePage() {
         <div className={styles.card}>
           {/* ── Avatar row ── */}
           <div className={styles.avatarSection}>
-            <div className={styles.avatarWrapper}>
-              {user?.profilePic ? (
-                <img
-                  src={user.profilePic}
-                  alt={user.name}
-                  className={styles.avatar}
-                  onError={(e) =>
-                    ((e.currentTarget as HTMLImageElement).style.display = "none")
-                  }
-                />
-              ) : (
-                <div className={styles.avatarFallback}>
-                  {getInitial(user?.name ?? "")}
-                </div>
-              )}
-              
-              <label className={styles.editAvatarLabel} htmlFor="avatar-upload">
-                <HiPencil className={styles.editIcon} />
-                <input 
-                  type="file" 
-                  id="avatar-upload"
-                  className={styles.hiddenInput} 
-                  accept="image/*"
-                  onChange={(e) => {
-                    // Logic for file upload goes here later
-                    console.log("File selected:", e.target.files?.[0]);
-                  }}
-                />
-              </label>
-            </div>
+            <Avatar 
+               src={user?.profilePic} 
+               name={user?.name} 
+               onFileSelect={(file) => setSelectedFile(file)}
+               isLoading={saving}
+            />
 
             <div className={styles.avatarMeta}>
               <p className={styles.avatarName}>{user?.name ?? "—"}</p>

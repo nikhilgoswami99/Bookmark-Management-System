@@ -6,6 +6,9 @@ import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
 import Session from "@/lib/models/session";
 import crypto from "crypto";
+import { loginSchema } from "@/lib/validators/loginSchema";
+
+
 
 export async function POST(req: Request) {
     try {
@@ -15,15 +18,23 @@ export async function POST(req: Request) {
         
         
         // 1. Get info from body
-        const { email, password } = await req.json();
+        const body = await req.json();
 
-        // 2. Validate data
-        if (!email || !password) {
+        // 2. Validate data with Zod
+        const validation = loginSchema.safeParse(body);
+
+        if (!validation.success) {
+            const errors = validation.error.flatten().fieldErrors;
             return NextResponse.json(
-                { message: "Email and password are required" },
+                { 
+                    message: "Validation failed", 
+                    errors: errors 
+                },
                 { status: 400 }
             );
         }
+
+        const { email, password } = validation.data;
 
         // 3. Find user (including password field which is hidden by default)
         const user = await User.findOne({ email }).select("+password");

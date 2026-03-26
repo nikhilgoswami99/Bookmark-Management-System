@@ -3,6 +3,7 @@ import Session from "@/lib/models/session";
 import User from "@/lib/models/user";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { profileUpdateSchema } from "@/lib/validators/profileSchema";
 
 export async function GET() {
   try {
@@ -35,8 +36,6 @@ export async function GET() {
 
 
 
-
-
 export async function PATCH(req: NextRequest) {
   try {
     // Step 1: Connect to DB
@@ -50,22 +49,18 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ message: "Not logged in" }, { status: 401 });
     }
 
-    // Step 3: Extract data from request body
+    // Step 3: Extract & Validate data with Zod
     const body = await req.json();
+    const validation = profileUpdateSchema.safeParse(body);
 
-    // Step 4 (security): Only allow safe fields — never trust raw body
-    const allowedFields = ["name", "profilePic"];
-    const updates: Record<string, any> = {};
-
-    for (const field of allowedFields) {
-      if (body[field] !== undefined) {
-        updates[field] = body[field];
-      }
+    if (!validation.success) {
+      return NextResponse.json(
+        { message: "Validation failed", errors: validation.error.flatten().fieldErrors },
+        { status: 400 }
+      );
     }
 
-    if (Object.keys(updates).length === 0) {
-      return NextResponse.json({ message: "No valid fields to update" }, { status: 400 });
-    }
+    const updates = validation.data;
 
     // Step 4: Use sessionID → find session → get userId → update user
     const session = await Session.findOne({ sessionId });
